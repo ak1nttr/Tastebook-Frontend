@@ -2,8 +2,10 @@
 import {useState} from "react";
 import {Divider, Input, Layout, Typography , Button} from "antd";
 import {Content} from "antd/es/layout/layout";
+import {useRouter} from "next/navigation";
 
 const Login = () => {
+    const router = useRouter()
     const[username, setUsername] = useState('');
     const[password, setPassword] = useState('');
 
@@ -136,6 +138,7 @@ const Login = () => {
                             marginTop: 20 ,
                         }}/>
                     <Button
+                        onClick={ () => {router.push('/register')}}
                         onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FFD93D'}
                         onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5cb45'}
                         style={{
