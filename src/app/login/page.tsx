@@ -61,7 +61,7 @@ const Login = () => {
                 <div
                     style={{
                         width: 350,
-                        height:480,
+                        height: 450,
                         background: '#F6F1E9',
                         flexDirection: 'column',
                         borderRadius: 15,
@@ -69,6 +69,8 @@ const Login = () => {
                         justifyContent: 'flex-start',
                         alignItems: 'center',
                         boxShadow: '0 0 12px rgba(0,0,0,0.5)',
+                        paddingRight:10,
+                        paddingLeft:10
                     }}>
                     <Typography
                         style={{
@@ -82,12 +84,13 @@ const Login = () => {
                         }}>
                         Log in
                     </Typography>
-                    <Divider style={{width: '100%', borderColor: '#4F200D', marginBottom: 20}}/>
                     <Input
-                        placeholder = "Username"
+                        placeholder = "Username or email"
                         onChange={(e) => setUsername(e.target.value)}
+                        className="custom-input"
                         style={{
-                            width:300,
+                            width:'100%',
+                            maxWidth:300,
                             height: 50,
                             marginTop:10,
                             backgroundColor: '#F6F1E9',
@@ -97,6 +100,7 @@ const Login = () => {
                     <Input
                         placeholder = "Password"
                         onChange={(e) => setPassword(e.target.value)}
+                        className="custom-input"
                         style={{
                             width:300,
                             height: 50,
@@ -110,10 +114,12 @@ const Login = () => {
                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FF8400'}
                             onClick={handleLogin}
                             style={{
-                                width:'70%' ,
-                                height:'10%' ,
+                                width:'100%' ,
+                                maxWidth:300,
+                                height: '100%',
+                                maxHeight:50,
                                 marginTop:20 ,
-                                borderRadius:4 ,
+                                borderRadius:5 ,
                                 border:'none' ,
                                 backgroundColor:'#FF8400',
                                 color:'#4F200D',
@@ -132,18 +138,24 @@ const Login = () => {
                         Forgot password?
                     </div>
                     <Divider
+                        orientation="center"
                         style={{
                             width: '100%',
                             borderColor: '#4F200D',
                             marginTop: 20 ,
-                        }}/>
+                        }}>
+                        <Typography style={{color:'#4F200D', fontFamily:'monospace', fontWeight:'bolder'}}>
+                            Don&#39;t have an account ?
+                        </Typography>
+                    </Divider>
                     <Button
                         onClick={ () => {router.push('/register')}}
                         onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FFD93D'}
                         onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5cb45'}
                         style={{
                             width: '50%',
-                            height:'10%',
+                            height: '100%',
+                            maxHeight:50,
                             marginBottom: 20,
                             borderRadius: 4,
                             border: 'none',
@@ -153,7 +165,7 @@ const Login = () => {
                             fontSize: 15,
                             fontWeight: 'bold'
                     }}>
-                        Create an account
+                        Sign up
                     </Button>
                 </div>
             </Content>
