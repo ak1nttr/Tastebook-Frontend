@@ -1,8 +1,9 @@
 'use client';
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { Divider, Input, Layout, Typography, Button } from "antd";
 import { Content } from "antd/es/layout/layout";
 import {useRouter} from "next/navigation";
+import {ExclamationCircleOutlined} from "@ant-design/icons";
 
 const Register = () => {
     const router = useRouter()
@@ -10,10 +11,25 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [error,setError] = useState('')
 
     const handleRegister = () => {
+        if(!username || !email || !password || !confirmPassword){
+            setError("Fill all the blanks!")
+            return
+        }
+        if(password !== confirmPassword){
+            setError("Passwords don't match")
+            return
+        }
+
         console.log('Registering user:', { username, email, password, confirmPassword });
+        setError("")
     };
+    useEffect(() => {
+        console.log("Hata:", error);
+    }, [error]);
+
 
     return (
         <Layout style={{ minHeight: '100vh' }}>
@@ -128,14 +144,16 @@ const Register = () => {
                         type="password"
                         className="custom-input"
                         onChange={(e) => setConfirmPassword(e.target.value)}
+                        status={error ? "error" : ""}
+                        suffix={error ? <ExclamationCircleOutlined style={{color: "red" }}/> : null}
                         style={{
                             width: 300,
                             height: 50,
                             marginTop: 20,
                             backgroundColor: '#F6F1E9',
                             borderRadius: 5,
-                            border: '1px solid #4F200D',
-                        }} />
+                            border: `1px solid ${error ? 'red' : '#4F200D'}`,
+                        }}/>
                     <Button
                         onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f89225'}
                         onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FF8400'}
