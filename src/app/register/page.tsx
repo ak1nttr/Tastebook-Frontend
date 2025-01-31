@@ -71,23 +71,24 @@ const Register = () => {
                         justifyContent: 'flex-start',
                         alignItems: 'center',
                         boxShadow: '0 0 12px rgba(0,0,0,0.5)',
+                        paddingLeft:10,
+                        paddingRight:10
                     }}>
                     <Typography
                         style={{
                             color: '#4F200D',
-                            fontSize: 35,
+                            fontSize: 30,
                             fontWeight: "bolder",
                             textAlign: 'center',
                             marginTop: 20,
-                            marginBottom: 5,
                             fontFamily: 'monospace',
                         }}>
-                        Create an Account
+                        Join to Tastebook
                     </Typography>
-                    <Divider style={{ width: '100%', borderColor: '#4F200D', marginBottom: 20 }} />
                     <Input
                         placeholder="Username"
                         onChange={(e) => setUsername(e.target.value)}
+                        className="custom-input"
                         style={{
                             width: 300,
                             height: 50,
@@ -99,8 +100,10 @@ const Register = () => {
                     <Input
                         placeholder="Email"
                         onChange={(e) => setEmail(e.target.value)}
+                        className="custom-input"
                         style={{
-                            width: 300,
+                            width:'100%',
+                            maxWidth: 300,
                             height: 50,
                             marginTop: 20,
                             backgroundColor: '#F6F1E9',
@@ -110,6 +113,7 @@ const Register = () => {
                     <Input
                         placeholder="Password"
                         type="password"
+                        className="custom-input"
                         onChange={(e) => setPassword(e.target.value)}
                         style={{
                             width: 300,
@@ -122,6 +126,7 @@ const Register = () => {
                     <Input
                         placeholder="Confirm Password"
                         type="password"
+                        className="custom-input"
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         style={{
                             width: 300,
@@ -136,10 +141,12 @@ const Register = () => {
                         onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FF8400'}
                         onClick={handleRegister}
                         style={{
-                            width: '70%',
-                            height: '10%',
+                            width: '100%',
+                            maxWidth:300,
+                            height: '100%',
+                            maxHeight:50,
                             marginTop: 20,
-                            borderRadius: 4,
+                            borderRadius: 5,
                             border: 'none',
                             backgroundColor: '#FF8400',
                             color: '#4F200D',
@@ -149,20 +156,26 @@ const Register = () => {
                         Sign Up
                     </Button>
                     <Divider
+                        orientation="center"
                         style={{
                             width: '100%',
                             borderColor: '#4F200D',
                             marginTop: 20,
-                        }} />
+                        }}>
+                        <Typography style={{color:'#4F200D', fontFamily:'monospace', fontWeight:'bolder'}}>
+                            Already have an account ?
+                        </Typography>
+                    </Divider>
                     <Button
                         onClick={() => {router.push('/login')}}
                         onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FFD93D'}
                         onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5cb45'}
                         style={{
                             width: '50%',
-                            height: '10%',
+                            height: '100%',
+                            maxHeight:50,
                             marginBottom: 20,
-                            borderRadius: 4,
+                            borderRadius: 5,
                             border: 'none',
                             backgroundColor: '#FFD93D',
                             color: '#4F200D',
@@ -170,7 +183,7 @@ const Register = () => {
                             fontSize: 15,
                             fontWeight: 'bold'
                         }}>
-                        Already have an account?
+                        Log in
                     </Button>
                 </div>
             </Content>
