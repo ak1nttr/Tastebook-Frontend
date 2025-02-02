@@ -1,5 +1,5 @@
 'use-client'
-
+import authService from "@/app/services/authService";
 import {Button, Divider, Input, Typography} from "antd";
 import {useRouter} from "next/navigation";
 import {useEffect, useState} from "react";
@@ -12,7 +12,7 @@ const RegisterForm = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error,setError] = useState('')
-    const handleRegister = () => {
+    const handleRegister = async () => {
         if(!username || !email || !password || !confirmPassword){
             setError("Fill all the blanks!")
             return
@@ -20,6 +20,21 @@ const RegisterForm = () => {
         if(password !== confirmPassword){
             setError("Passwords don't match")
             return
+        }
+        // if no errors are caught
+        try {
+            const credentials = {
+                username: username,
+                password: password
+            }
+            const response = authService.register(credentials)
+            if (!response){
+                console.log("response is either empty or null: ",response)
+                return
+            }
+            console.log("Registration is done! - ",response)
+        } catch (error) {
+            throw error
         }
 
         console.log('Registering user:', { username, email, password, confirmPassword });
